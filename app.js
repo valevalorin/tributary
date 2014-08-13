@@ -2,7 +2,6 @@
     buffer = "Congrations!";
     var app = angular.module('tributary', [ ]);
     app.controller('TribController', function(){
-        this.message = buffer;
+        this.currentPlayer = "yt";
     });
-    console.log("somehsit");
 })();

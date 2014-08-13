@@ -12,7 +12,7 @@
 
 	  <style>
           body {
-              min-width: 400px;
+              min-width: 600px;
               min-height: 400px;
               background-color: #444444;
               overflow-x: hidden;
@@ -26,15 +26,44 @@
               width: 75px;
               height: 75px;
           }
-
+          .tribyt
+          {
+              min-width: 350px;
+              min-height: 400px;
+          }
+          .triblist
+          {
+              min-width: 250px;
+              min-height: 400px;
+          }
+          .tribplayer
+          {
+              min-width: 350px;
+              min-height: 400px;
+          }
+          .tribsep
+          {
+              position:absolute;
+              left: 250px;
+              top: 20px;
+              min-height: 360px;
+              min-width: 1px;
+              background-color: white;
+              box-shadow: 10px 10px 10px #BBBBBBFF;
+          }
       </style>
 	</head>
 
-    <body>
-        <div ng-controller="TribController as tc">
-            <h1>{{tc.message}}</h1>
+    <body ng-controller="TribController as ctrl">
+        <div id="stream_list" class="pull-left triblist" >
+            <div class=""></div>
         </div>
-
+        <div class="tribsep"></div>
+        <div id="players" class="pull-right tribplayer">
+            <div id="yt" class="tribyt" ng-show="ctrl.currentPlayer=='yt'"></div>
+            <div id="sc" ng-show="ctrl.currentPlayer=='sc'"></div>
+            <div id="bc" ng-show="ctrl.currentPlayer=='bc'"></div>
+        </div>
 
     </body>
 </html>
