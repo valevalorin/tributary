@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "StreamMan",
-  "description": "Multisite streaming playlist support",
+  "name": "Tributary",
+  "description": "Multi-stream source playlist platform",
   "version": "1.0",
 
   "browser_action": {
@@ -17,5 +17,6 @@
   },
   "background": {
       "scripts": ["background.js"]
-  }
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

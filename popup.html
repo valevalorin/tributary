@@ -1,11 +1,14 @@
 <!doctype html>
 
-<html lang="en">
+<html ng-app="tributary">
 	<head>
-	  <meta charset="utf-8">
-
-	  <meta name="description" content="streamman">
+	  <meta name="description" content="Tributary">
 	  <meta name="author" content="Duncan Kelly">
+
+      <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+      <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="angular.min.js"></script>
+      <script type="text/javascript" src="app.js"></script>
 
 	  <style>
           body {
@@ -13,6 +16,7 @@
               min-height: 400px;
               background-color: #444444;
               overflow-x: hidden;
+              color:white;
           }
 
           img {
@@ -24,12 +28,13 @@
           }
 
       </style>
-
-	  <!--[if lt IE 9]>
-	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	  <![endif]-->
 	</head>
 
-	<body>
-	</body>
+    <body>
+        <div ng-controller="TribController as tc">
+            <h1>{{tc.message}}</h1>
+        </div>
+
+
+    </body>
 </html>
