@@ -3,5 +3,6 @@
     var app = angular.module('tributary', [ ]);
     app.controller('TribController', function(){
         this.currentPlayer = "yt";
+        this.queue = ["Some Song"];
     });
 })();
