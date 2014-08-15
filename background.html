@@ -18,11 +18,12 @@
 </head>
 
 <body ng-controller="TribController as ctrl">
+<div>{{ctrl.activeTrack.link}}</div>
     <div id="players" class="pull-right">
         <div id="yt" class="tribYT" ng-show="ctrl.currentPlayer=='yt'"></div>
         <div id="sc" ng-show="ctrl.currentPlayer=='sc'"></div>
         <div id="bc" ng-show="ctrl.currentPlayer=='bc'">
-            <iframe id="bciframe" style="border: 0; width: 100%; height: 120px;" src="http://bandcamp.com/EmbeddedPlayer/album=3537911480/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/?thisistrib=true" seamless><a href="http://evanawake.bandcamp.com/album/minowa">MINOWA by Evan Awake</a></iframe>
+            <iframe id="bciframe" style="border: 0; width: 100%; height: 120px;" ng-src="{{ctrl.activeTrack.link}}"  seamless><a href="http://evanawake.bandcamp.com/album/minowa">MINOWA by Evan Awake</a></iframe>
         </div>
     </div>
 </body>

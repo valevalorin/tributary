@@ -1,19 +1,29 @@
 (function(){
     buffer = "Congrations!";
-    var app = angular.module('tributary', [ ]);
-    app.controller('TribController', function($scope){
+    var app = angular.module('tributary', [ ]).config(function($sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist([ "http://bandcamp.com/**",
+        "http://*.bandcamp.com/**"]);
+    });
+    app.controller('TribController', function($scope, $sce){
         //Initialize app
         $scope.play = true;
         this.currentPlayer = "bc";
         track = {
             title: "Evan Awake - Discovery",
             provider: "BC",
-            link: "https://youtube.com/?v=qpwoeuqpw",
+            link: "http://bandcamp.com/EmbeddedPlayer/album=3537911480/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/track=1241010586/transparent=true/?thisistrib=true",
             active: false
         };
-        $scope.queue = [];
-        $scope.queue.push(track);
-        $scope.queue[0].active = true;
+        this.queue = [];
+        this.queue.push(track);
+        newtrack = {
+            title: "Evan Awake - Discovery",
+            provider: "BC",
+            link: "http://bandcamp.com/EmbeddedPlayer/album=3537911480/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/track=1298998539/transparent=true/?thisistrib=true",
+            active: false
+        };
+        this.queue.push(newtrack);
+        this.activeTrack = this.queue.shift();
 
         $('#tribTrackTitle').ellipsis();
         //Receive from content script
@@ -28,6 +38,7 @@
                 }
             })
         });
+        console.log($sce.trustAsResourceUrl(this.activeTrack.link).$$unwrapTrustedValue());
 
 /*        //Send to content script
         this.myport = chrome.runtime.connect({name: "TribToContent"});
