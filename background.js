@@ -3,3 +3,5 @@ function queueClick(info, tab) {
 }
 
 chrome.contextMenus.create({"title": "Tributary Queue", "contexts": ["link"], "onclick": queueClick});
+var id;
+chrome.runtime.sendMessage({message: "trib-back-checkin"});

@@ -8,7 +8,9 @@
 
 
     //Send to extension
-    var myport = chrome.runtime.connect({name: 'ContentToTrib'});
+    var id;
+
+    var myport = chrome.runtime.connect({name: 'Tributary'});
     myport.postMessage({method: "iniplay?"});
     console.log('message sent');
     myport.onMessage.addListener(function(msg){
@@ -21,17 +23,11 @@
            else
                console.log('not playing bro: '+msg.value);
        }
+       else if(msg.method == 'click')
+       {
+            console.log("play on click");
+            document.getElementById('big_play_button').click();
+       }
     });
-/*
-    //Receive from extension
-    chrome.runtime.onConnect(function(port){
-       console.assert(port.name == "TribToContent");
-       port.onMessage.addListener(function(msg){
-          if(msg.method = 'click')
-          {
-              document.getElementById('big_play_button').click();
-          }
-       });
-    });*/
 
 })();
