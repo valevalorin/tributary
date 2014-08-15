@@ -13,6 +13,7 @@
       <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="angular.min.js"></script>
       <script type="text/javascript" src="app.js"></script>
+      <script type="text/javascript" src="jquery.ellipsis.js"></script>
 
 	  <style>
           body {
@@ -92,8 +93,12 @@
               margin-left: 4px;
               padding: 4px;
               width: 160px;
+              height: 20px;
               border-radius: 1px;
               text-align: left;
+              overflow:hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
              /* -webkit-box-shadow: 3px 4px 5px 0px rgba(30, 30, 30, 0.75);
               -moz-box-shadow:    3px 4px 5px 0px rgba(30, 30, 30, 0.75);
               box-shadow:         3px 4px 5px 0px rgba(30, 30, 30, 0.75);*/
@@ -104,11 +109,17 @@
               background-color: #777777;
               font-weight:bold;
               margin-left: 4px;
+              vertical-align: bottom;
               padding: 4px;
               width: 160px;
+              height: 20px;
               border-radius: 1px;
               text-align: left;
               border: 1px solid #077FFF;
+              text-overflow: ellipsis;
+              overflow:hidden;
+              white-space: nowrap;
+
              /* -webkit-box-shadow: 3px 4px 5px 0px rgba(255, 255, 255, 0.75);
               -moz-box-shadow:    3px 4px 5px 0px rgba(255, 255, 255, 0.75);
               box-shadow:         3px 4px 5px 0px rgba(255, 255, 255, 0.75);*/
@@ -153,18 +164,13 @@
             <ul class="queueList">
                 <li class="queueItem"ng-repeat="song in ctrl.queue track by song.title">
                     <div class="bulletArrow"><img src="activearrow.png"></div>
-                    <div ng-class="{activeTrackString: song.active} "class="trackString">{{song.title}}</div>
+                    <div id="tribTrackTitle" ng-class="{activeTrackString: song.active} "class="trackString">{{song.title}}</div>
                     <div class="trackProvider text-center">{{song.provider}}</div>
                     <div ng-show="song.active" class="activeBar"></div>
                 </li>
             </ul>
         </div>
         <div class="tribSep"></div>
-        <div id="players" class="pull-right tribPlayer">
-            <div id="yt" class="tribYT" ng-show="ctrl.currentPlayer=='yt'"></div>
-            <div id="sc" ng-show="ctrl.currentPlayer=='sc'"></div>
-            <div id="bc" ng-show="ctrl.currentPlayer=='bc'"></div>
-        </div>
-
+        <button ng-click="ctrl.clickButton()">Play</button>
     </body>
 </html>
