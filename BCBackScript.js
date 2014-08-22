@@ -10,7 +10,13 @@
     //Send to extension
     var id;
 
-    var myport = chrome.runtime.connect({name: 'Tributary'});
+    chrome.runtime.sendMessage({message: "whatever man"});
+    chrome.runtime.onConnectExternal.addListener(function(port) {
+        port.onMessage.addListener(function(msg) {
+            console.log(msg.message);
+        });
+    });
+    /*var myport = chrome.runtime.connect({name: 'Tributary'});
     myport.postMessage({method: "iniplay?"});
     console.log('message sent');
     myport.onMessage.addListener(function(msg){
@@ -28,6 +34,6 @@
             console.log("play on click");
             document.getElementById('big_play_button').click();
        }
-    });
+    });*/
 
 })();

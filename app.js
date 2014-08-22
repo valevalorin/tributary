@@ -29,7 +29,18 @@
         $('#tribTrackTitle').ellipsis();
         //Receive from content script
 
-        chrome.runtime.onConnect.addListener(function(port) {
+        var id;
+
+        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+            console.log(sender.tab ? "from a content script:" + sender.tab.url : sender);
+            id = sender.id;
+            var port = chrome.runtime.connect(id);
+            port.postMessage({message:"iammessage"});
+        });
+
+
+
+       /* chrome.runtime.onConnect.addListener(function(port) {
             console.assert(port.name == "Tributary");
             console.log("asserted");
 
@@ -46,7 +57,7 @@
                 port.postMessage({method: "click"})
             };
 
-        });
+        });*/
        /* $scope.clickButton = function () {
             console.log("outside");
         };*/
